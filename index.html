@@ -358,12 +358,25 @@ footer { background: #071829; padding: 44px 2.5rem; }
 .solution-item-title { font-size: 14px; font-weight: 600; color: var(--navy); margin-bottom: 2px; }
 .solution-item-desc { font-size: 12px; color: var(--text-mid); }
 
-.user-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
-.user-card { background: var(--navy); border-radius: 14px; padding: 18px 14px; text-align: center; }
-.user-card-icon { width: 36px; height: 36px; background: rgba(255,255,255,0.1); border-radius: 9px; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; }
-.user-card-icon svg { width: 17px; height: 17px; color: rgba(255,255,255,0.7); }
-.user-card-title { font-size: 13px; font-weight: 600; color: white; margin-bottom: 4px; }
-.user-card-desc { font-size: 11px; color: rgba(255,255,255,0.5); line-height: 1.5; }
+.user-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-top: 4px; }
+.user-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 16px; padding: 22px 16px;
+  text-align: center;
+  transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+}
+.user-card:hover { box-shadow: 0 6px 24px rgba(11,37,69,0.1); transform: translateY(-2px); border-color: var(--sky-mid); }
+.user-card-icon-wrap {
+  width: 52px; height: 52px;
+  background: var(--sky);
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 14px;
+}
+.user-card-icon-wrap svg { width: 24px; height: 24px; color: var(--blue); }
+.user-card-title { font-size: 14px; font-weight: 600; color: var(--navy); margin-bottom: 6px; }
+.user-card-desc { font-size: 12px; color: var(--text-mid); line-height: 1.55; }
 
 @media (max-width: 960px) {
   .problem-grid { grid-template-columns: 1fr; gap: 40px; }
@@ -443,9 +456,9 @@ footer { background: #071829; padding: 44px 2.5rem; }
   <div class="section-inner">
     <div class="problem-grid">
       <div class="problem-left">
-        <p class="section-eyebrow">Neden Endo-Track AI?</p>
-        <h2 class="section-title">Taş hastalığı izlemi<br>hâlâ manuel yürütülüyor</h2>
-        <p class="section-lead">Ameliyat sonrası hastalar çoğunlukla telefon görüşmeleri veya WhatsApp mesajlarıyla takip ediliyor. Kritik bulgular geç fark ediliyor, komplikasyon riski artıyor, hekim iş yükü katlanıyor.</p>
+        <p class="section-eyebrow">Sorun ve Çözüm</p>
+        <h2 class="section-title">Ameliyat sonrası takip<br>hâlâ eksik kalıyor</h2>
+        <p class="section-lead">Taş hastalarının büyük çoğunluğu tedavi sonrasında düzensiz kontrollerle, telefon görüşmeleri veya mesajlaşma uygulamaları üzerinden takip ediliyor. Bu yaklaşım kritik bulguların geç fark edilmesine, komplikasyon riskinin artmasına ve ağır hekim iş yüküne yol açıyor.</p>
         <div class="problem-stats">
           <div class="problem-stat">
             <div class="problem-stat-icon">
@@ -461,8 +474,8 @@ footer { background: #071829; padding: 44px 2.5rem; }
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg>
             </div>
             <div>
-              <div class="problem-stat-title">Ağır hekim iş yükü</div>
-              <div class="problem-stat-desc">Manuel hatırlatmalar ve dağınık veriler sürdürülemez bir yük oluşturuyor</div>
+              <div class="problem-stat-title">Sürdürülemez iş yükü</div>
+              <div class="problem-stat-desc">Manuel hatırlatmalar ve dağınık veriler hekimleri yoruyor</div>
             </div>
           </div>
           <div class="problem-stat">
@@ -471,7 +484,7 @@ footer { background: #071829; padding: 44px 2.5rem; }
             </div>
             <div>
               <div class="problem-stat-title">Kayıp klinik veri</div>
-              <div class="problem-stat-desc">Mesajlaşma uygulamalarında kalan veriler kayboluyor, takip edilemiyor</div>
+              <div class="problem-stat-desc">Mesajlaşma uygulamalarında kalan veriler kaybolup gidiyor</div>
             </div>
           </div>
         </div>
@@ -479,7 +492,7 @@ footer { background: #071829; padding: 44px 2.5rem; }
       <div class="problem-right">
         <div class="solution-card">
           <div class="solution-card-header">
-            <div class="solution-label">Endo-Track AI çözümü</div>
+            <div class="solution-label">Endo-Track AI ile</div>
           </div>
           <div class="solution-items">
             <div class="solution-item">
@@ -506,32 +519,47 @@ footer { background: #071829; padding: 44px 2.5rem; }
               </div>
               <div>
                 <div class="solution-item-title">Klinik formlar</div>
-                <div class="solution-item-desc">Standart, yapılandırılmış parametreler — veri kaybolmaz</div>
+                <div class="solution-item-desc">Standart yapılandırılmış parametreler — veri kaybolmaz</div>
               </div>
             </div>
           </div>
         </div>
+
         <div class="user-cards">
           <div class="user-card">
-            <div class="user-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <div class="user-card-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 2a5 5 0 1 1 0 10A5 5 0 0 1 12 2z"/>
+                <path d="M3 21c0-4 4-7 9-7s9 3 9 7"/>
+                <path d="M16 6.5c1-.5 2.5-.3 3.5.7s1.2 2.5.7 3.5"/>
+              </svg>
             </div>
             <div class="user-card-title">Hekimler</div>
-            <div class="user-card-desc">Dağınık mesajlar yerine düzenli klinik veri</div>
+            <div class="user-card-desc">Dağınık mesajlar yerine düzenli, zaman serisi klinik veri</div>
           </div>
           <div class="user-card">
-            <div class="user-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            <div class="user-card-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 2a5 5 0 1 1 0 10A5 5 0 0 1 12 2z"/>
+                <path d="M3 21c0-4 4-7 9-7s9 3 9 7"/>
+                <path d="M9 11c0 3 1.5 5 3 5s3-2 3-5"/>
+                <path d="M8 13h2M14 13h2"/>
+              </svg>
             </div>
             <div class="user-card-title">Hastalar</div>
-            <div class="user-card-desc">Kolay, güvenli ve anlaşılır takip süreci</div>
+            <div class="user-card-desc">Kolay, anlaşılır ve güvenli bir takip deneyimi</div>
           </div>
           <div class="user-card">
-            <div class="user-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <div class="user-card-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="2" y="7" width="20" height="14" rx="2"/>
+                <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+                <line x1="12" y1="12" x2="12" y2="16"/>
+                <line x1="10" y1="14" x2="14" y2="14"/>
+              </svg>
             </div>
             <div class="user-card-title">Klinikler</div>
-            <div class="user-card-desc">Standart, ölçeklenebilir izlem altyapısı</div>
+            <div class="user-card-desc">Standart, ölçeklenebilir dijital izlem altyapısı</div>
           </div>
         </div>
       </div>
@@ -607,7 +635,7 @@ footer { background: #071829; padding: 44px 2.5rem; }
   <div class="section-inner">
     <div class="section-header">
       <p class="section-eyebrow">Ekip</p>
-      <h2 class="section-title">Arkasındaki ekip</h2>
+      <h2 class="section-title">Kurucu ekip</h2>
       <p class="section-lead">Endo-Track AI, üroloji kliniklerinde yürütülen pilot çalışmalardan doğdu. Ekibimiz akademik birikim, klinik deneyim ve teknik geliştirme kapasitesini bir araya getiriyor.</p>
     </div>
     <div class="team-grid">
