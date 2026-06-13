@@ -565,25 +565,24 @@ footer { background: #071829; padding: 44px 2.5rem; }
       <div class="contact-form-wrap">
         <h2 class="section-title">Demo Talep Edin</h2>
         <p class="section-lead">Formu doldurun, sizi arayalım.</p>
-        <form class="contact-form" onsubmit="handleSubmit(event)">
+        <form class="contact-form" action="https://formspree.io/f/xgobreew" method="POST">
           <div class="form-group">
             <label class="form-label">Adınız</label>
-            <input type="text" class="form-input" placeholder="Dr. Ad Soyad" required>
+            <input type="text" name="ad_soyad" class="form-input" placeholder="Dr. Ad Soyad" required>
           </div>
           <div class="form-group">
             <label class="form-label">Kurum</label>
-            <input type="text" class="form-input" placeholder="Hastane veya klinik adı" required>
+            <input type="text" name="kurum" class="form-input" placeholder="Hastane veya klinik adı" required>
           </div>
           <div class="form-group">
             <label class="form-label">E-posta</label>
-            <input type="email" class="form-input" placeholder="isim@kurum.com" required>
+            <input type="email" name="email" class="form-input" placeholder="isim@kurum.com" required>
           </div>
           <div class="form-group">
             <label class="form-label">Mesajınız (isteğe bağlı)</label>
-            <textarea class="form-input" placeholder="Demo için uygun zamanınız veya sorularınız…"></textarea>
+            <textarea name="mesaj" class="form-input" placeholder="Demo için uygun zamanınız veya sorularınız…"></textarea>
           </div>
           <button type="submit" class="btn-navy">Demo Talep Edin →</button>
-          <p id="form-success">✓ Mesajınız alındı, en kısa sürede dönüş yapacağız.</p>
         </form>
       </div>
     </div>
@@ -608,7 +607,6 @@ footer { background: #071829; padding: 44px 2.5rem; }
 <script>
 function toggleMenu(){const m=document.getElementById('mobileMenu');m.style.display=m.style.display==='flex'?'none':'flex';}
 function closeMenu(){document.getElementById('mobileMenu').style.display='none';}
-function handleSubmit(e){e.preventDefault();document.getElementById('form-success').style.display='block';e.target.querySelectorAll('input,textarea').forEach(el=>el.value='');}
 document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}});});
 </script>
 </body>
