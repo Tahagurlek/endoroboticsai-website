@@ -565,7 +565,7 @@ footer { background: #071829; padding: 44px 2.5rem; }
       <div class="contact-form-wrap">
         <h2 class="section-title">Demo Talep Edin</h2>
         <p class="section-lead">Formu doldurun, sizi arayalım.</p>
-        <form class="contact-form" action="https://formspree.io/f/xgobreew" method="POST">
+        <form class="contact-form" id="demoForm">
           <div class="form-group">
             <label class="form-label">Adınız</label>
             <input type="text" name="ad_soyad" class="form-input" placeholder="Dr. Ad Soyad" required>
@@ -583,6 +583,7 @@ footer { background: #071829; padding: 44px 2.5rem; }
             <textarea name="mesaj" class="form-input" placeholder="Demo için uygun zamanınız veya sorularınız…"></textarea>
           </div>
           <button type="submit" class="btn-navy">Demo Talep Edin →</button>
+          <p id="form-success">✓ Mesajınız alındı, en kısa sürede dönüş yapacağız.</p>
         </form>
       </div>
     </div>
@@ -605,6 +606,30 @@ footer { background: #071829; padding: 44px 2.5rem; }
 </footer>
 
 <script>
+document.getElementById('demoForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = this.querySelector('button[type=submit]');
+  btn.textContent = 'Gönderiliyor…';
+  btn.disabled = true;
+  try {
+    const res = await fetch('https://formspree.io/f/xgobreew', {
+      method: 'POST',
+      body: new FormData(this),
+      headers: { 'Accept': 'application/json' }
+    });
+    if (res.ok) {
+      document.getElementById('form-success').style.display = 'block';
+      this.querySelectorAll('input, textarea').forEach(el => el.value = '');
+      btn.textContent = 'Gönderildi ✓';
+    } else {
+      btn.textContent = 'Hata oluştu, tekrar deneyin';
+      btn.disabled = false;
+    }
+  } catch {
+    btn.textContent = 'Hata oluştu, tekrar deneyin';
+    btn.disabled = false;
+  }
+});
 function toggleMenu(){const m=document.getElementById('mobileMenu');m.style.display=m.style.display==='flex'?'none':'flex';}
 function closeMenu(){document.getElementById('mobileMenu').style.display='none';}
 document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}});});
